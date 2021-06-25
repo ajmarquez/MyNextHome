@@ -9,6 +9,15 @@ import Foundation
 import UIKit
 
 class MainTabBarController: UITabBarController {
+        
+    let listCoordinator = ListCoordinator()
+    let favoritesCoordinator = FavoriteCoordinator()
     
-    let mainCoordinator
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = .blue
+        
+        viewControllers = [listCoordinator.navigationController, favoritesCoordinator.navigationController]
+    }
 }

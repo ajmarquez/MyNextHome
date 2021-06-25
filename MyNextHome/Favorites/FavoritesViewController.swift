@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
-class FavoritesViewController {
+class FavoritesViewController: UIViewController {
     
 }
+
+

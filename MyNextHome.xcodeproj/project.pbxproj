@@ -18,6 +18,7 @@
 		1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */; };
 		1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6ED268674F700BC5658 /* ListViewController.swift */; };
 		1CC0D6F02686751800BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */; };
+		1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
 		1CC0D6ED268674F700BC5658 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				1CC0D6E7268669A100BC5658 /* Coordinator.swift */,
 				1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */,
+				1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 				1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */,
 				1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */,
 				1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */,
+				1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,7 +360,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ajmarquez.MyNextHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -375,7 +379,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ajmarquez.MyNextHome;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
