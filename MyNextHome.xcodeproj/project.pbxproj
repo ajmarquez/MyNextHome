@@ -17,8 +17,9 @@
 		1CC0D6EA268671AD00BC5658 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */; };
 		1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */; };
 		1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6ED268674F700BC5658 /* ListViewController.swift */; };
-		1CC0D6F02686751800BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */; };
 		1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */; };
+		1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */; };
+		1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F5268684F000BC5658 /* RealState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,8 +35,9 @@
 		1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = MyNextHome/Home/MainTabBarController.swift; sourceTree = SOURCE_ROOT; };
 		1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
 		1CC0D6ED268674F700BC5658 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		1CC0D6F5268684F000BC5658 /* RealState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		1CC0D6E2268665ED00BC5658 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1CC0D6F5268684F000BC5658 /* RealState.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -120,7 +123,7 @@
 		1CC0D6E62686663300BC5658 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
-				1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */,
+				1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -196,8 +199,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */,
+				1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */,
 				1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */,
-				1CC0D6F02686751800BC5658 /* FavoritesViewController.swift in Sources */,
+				1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */,
 				1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */,
 				1CC0D6EA268671AD00BC5658 /* MainTabBarController.swift in Sources */,
 				1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */,

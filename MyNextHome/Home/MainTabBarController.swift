@@ -11,7 +11,7 @@ import UIKit
 class MainTabBarController: UITabBarController {
         
     let listCoordinator = ListCoordinator()
-    let favoritesCoordinator = FavoriteCoordinator()
+    let favoritesCoordinator = FavoritesCoordinator()
     
     
     override func viewDidLoad() {

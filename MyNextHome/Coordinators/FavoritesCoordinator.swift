@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class FavoriteCoordinator: Coordinator {
+class FavoritesCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -17,7 +17,6 @@ class FavoriteCoordinator: Coordinator {
         
         let vc = FavoritesViewController()
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
-        
         navigationController.viewControllers = [vc]
     }
     
