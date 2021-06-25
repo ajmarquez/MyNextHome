@@ -13,6 +13,11 @@
 		1CC0D6D62686655A00BC5658 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D42686655A00BC5658 /* Main.storyboard */; };
 		1CC0D6D82686655B00BC5658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D72686655B00BC5658 /* Assets.xcassets */; };
 		1CC0D6DB2686655B00BC5658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D92686655B00BC5658 /* LaunchScreen.storyboard */; };
+		1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6E7268669A100BC5658 /* Coordinator.swift */; };
+		1CC0D6EA268671AD00BC5658 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */; };
+		1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */; };
+		1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6ED268674F700BC5658 /* ListViewController.swift */; };
+		1CC0D6F02686751800BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		1CC0D6D72686655B00BC5658 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CC0D6DA2686655B00BC5658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CC0D6DC2686655B00BC5658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1CC0D6E7268669A100BC5658 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = MyNextHome/Home/MainTabBarController.swift; sourceTree = SOURCE_ROOT; };
+		1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
+		1CC0D6ED268674F700BC5658 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,8 @@
 		1CC0D6E3268665F400BC5658 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				1CC0D6E7268669A100BC5658 /* Coordinator.swift */,
+				1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -89,6 +101,7 @@
 		1CC0D6E42686662300BC5658 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -96,6 +109,7 @@
 		1CC0D6E52686662C00BC5658 /* List */ = {
 			isa = PBXGroup;
 			children = (
+				1CC0D6ED268674F700BC5658 /* ListViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -103,6 +117,7 @@
 		1CC0D6E62686663300BC5658 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
+				1CC0D6EF2686751800BC5658 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
 			sourceTree = "<group>";
@@ -177,9 +192,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */,
 				1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */,
+				1CC0D6F02686751800BC5658 /* FavoritesViewController.swift in Sources */,
+				1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */,
+				1CC0D6EA268671AD00BC5658 /* MainTabBarController.swift in Sources */,
 				1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */,
 				1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */,
+				1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
