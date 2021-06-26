@@ -21,6 +21,10 @@
 		1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */; };
 		1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F5268684F000BC5658 /* RealState.swift */; };
 		1CC0D6F82686883500BC5658 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F72686883500BC5658 /* ListViewModel.swift */; };
+		1CC0D6FB26876C8C00BC5658 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6FA26876C8C00BC5658 /* NetworkService.swift */; };
+		1CC0D6FD268783A700BC5658 /* HomegateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6FC268783A700BC5658 /* HomegateAPI.swift */; };
+		1CC0D6FF268785EC00BC5658 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6FE268785EC00BC5658 /* Endpoint.swift */; };
+		1CC0D7012687EA2200BC5658 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D7002687EA2200BC5658 /* NetworkResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		1CC0D6F5268684F000BC5658 /* RealState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealState.swift; sourceTree = "<group>"; };
 		1CC0D6F72686883500BC5658 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
+		1CC0D6FA26876C8C00BC5658 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		1CC0D6FC268783A700BC5658 /* HomegateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomegateAPI.swift; sourceTree = "<group>"; };
+		1CC0D6FE268785EC00BC5658 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		1CC0D7002687EA2200BC5658 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +80,7 @@
 		1CC0D6CD2686655A00BC5658 /* MyNextHome */ = {
 			isa = PBXGroup;
 			children = (
+				1CC0D6F926876C3000BC5658 /* Networking */,
 				1CC0D6E2268665ED00BC5658 /* Models */,
 				1CC0D6E3268665F400BC5658 /* Coordinators */,
 				1CC0D6E42686662300BC5658 /* Home */,
@@ -92,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				1CC0D6F5268684F000BC5658 /* RealState.swift */,
+				1CC0D7002687EA2200BC5658 /* NetworkResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -129,6 +139,16 @@
 				1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */,
 			);
 			path = Favorites;
+			sourceTree = "<group>";
+		};
+		1CC0D6F926876C3000BC5658 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				1CC0D6FA26876C8C00BC5658 /* NetworkService.swift */,
+				1CC0D6FE268785EC00BC5658 /* Endpoint.swift */,
+				1CC0D6FC268783A700BC5658 /* HomegateAPI.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,7 +221,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CC0D6FF268785EC00BC5658 /* Endpoint.swift in Sources */,
 				1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */,
+				1CC0D6FD268783A700BC5658 /* HomegateAPI.swift in Sources */,
 				1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */,
 				1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */,
 				1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */,
@@ -210,7 +232,9 @@
 				1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */,
 				1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */,
 				1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */,
+				1CC0D7012687EA2200BC5658 /* NetworkResponse.swift in Sources */,
 				1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */,
+				1CC0D6FB26876C8C00BC5658 /* NetworkService.swift in Sources */,
 				1CC0D6F82686883500BC5658 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
