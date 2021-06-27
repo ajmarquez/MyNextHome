@@ -7,9 +7,12 @@
 
 import Foundation
 
-struct NetworkResponse: Decodable {
-    let resultCount: Int
-    let items: [RealState]
+struct NetworkResponse<Wrapped: Decodable>: Decodable {
+    let items: Wrapped
+}
 
-    static let `default` = NetworkResponse(resultCount: 765432, items: [RealState.default])
+struct RealStateResponse: Decodable {
+   let items: [RealState]
+    
+    static let `default` = RealStateResponse(items: [RealState.default])
 }
