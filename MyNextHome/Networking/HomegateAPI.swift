@@ -16,3 +16,27 @@ class HomegateAPI {
     }
 
 }
+
+extension HomegateAPI {
+    static func getImageURL(for item: RealState) -> URL {
+        
+        guard let mainUrl = URL(string: item.imageURL) else {
+            preconditionFailure("ImageURL from RealState Item could not be loaded")
+        }
+        
+        let workingPath = mainUrl.path
+        
+        //Define the correct route for the image
+        var workingURL = URLComponents()
+        workingURL.scheme = "https"
+        workingURL.host = "homegate.ch"
+        workingURL.path = workingPath
+        
+        guard let finalURL = workingURL.url else {
+            preconditionFailure(
+                "Invalid URL Components: \(workingURL)"
+            )
+        }
+        return finalURL
+    }
+}

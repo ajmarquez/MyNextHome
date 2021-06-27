@@ -16,3 +16,5 @@ struct RealStateResponse: Decodable {
     
     static let `default` = RealStateResponse(items: [RealState.default])
 }
+
+

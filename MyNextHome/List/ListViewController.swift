@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit
-import Combine
 
 protocol ListViewDelegate {
     func didSelectItem()
@@ -17,16 +16,19 @@ protocol ListViewDelegate {
 
 class ListViewController: UIViewController {
     
-    @Published private(set) var item: [RealState] = []
-    private var cancellables: Set<AnyCancellable> = Set()
     var listDelegate: ListViewDelegate!
     let tableView = UITableView()
+    let demoArray = RealState.demoArray
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(demoArray)
+        tableView.dataSource = self
+        tableView.delegate = self
         setTableView()
-        
-        requestList()
+        tableView.register(ListViewCell.self, forCellReuseIdentifier: "listCell")
     }
     
     func setTableView() {
@@ -38,36 +40,22 @@ class ListViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    
-    func requestList() {
-        let api = HomegateAPI()
-        api.loadRealStates()
-            .replaceError(with: RealStateResponse.default)
-            .sink(receiveValue: { result in
-                print(result)
-            })
-            .store(in: &cancellables)
-    }
+}
 
-//    func requestList() {
-//        URLSession.shared.dataTask(with: URLRequest(url: URL(string: Endpoint.realStateList.url.absoluteString)!)) {
-//            data, response, error in
-//
-//            if let data = data {
-//                let jsonDecoder = JSONDecoder()
-//                print("Data: \(data)")
-//                do {
-//
-//                    let parsedJson = try jsonDecoder.decode(RealStateResponse.self, from: data)
-//                    print(parsedJson)
-//                    print(parsedJson.items)
-//                } catch {
-//                    print(error)
-//
-//
-//                }
-//            }
-//        }.resume()
-//    }
+extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        demoArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
+        cell.realState = demoArray[indexPath.row]
+        print(demoArray[indexPath.row])
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
     
 }

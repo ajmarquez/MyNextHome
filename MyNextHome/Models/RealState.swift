@@ -47,6 +47,18 @@ extension RealState: Decodable {
 }
 
 
+extension RealState {
+    static let demoArray = [
+    RealState(id: 123, title: "Rent House 01", street: "Usedomer Str.10", zip: "13355", city: "Berlin", geoLocation: "", price: 1234456, description: "", imageURL: "", currency: "EUR"),
+        RealState(id: 123, title: "Rent House 01", street: "Usedomer Str.10", zip: "13355", city: "Berlin", geoLocation: "", price: 1234456, description: "", imageURL: "", currency: "EUR"),
+        RealState(id: 123, title: "Rent House 01", street: "Usedomer Str.10", zip: "13355", city: "Berlin", geoLocation: "", price: 1234456, description: "", imageURL: "", currency: "EUR"),
+        RealState(id: 123, title: "Rent House 01", street: "Usedomer Str.10", zip: "13355", city: "Berlin", geoLocation: "", price: 1234456, description: "", imageURL: "", currency: "EUR")
+    ]
+}
+
+
+
+
 
 
 
