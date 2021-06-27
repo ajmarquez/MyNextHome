@@ -14,30 +14,31 @@ struct RealState {
     var zip: String
     var city: String
     var geoLocation: String
-    //var price: Float
+    var price: Float
     var description: String
     var imageURL: String
     
     enum CodingKeys: String, CodingKey {
-        case title, street, zip, city, geoLocation, description //price
+        case title, street, zip, city, geoLocation, description
         case id = "advertisementId"
         case imageURL = "picFilename1"
+        case price = "sellingPrice"
     }
     
-    static let `default` = RealState(id: 12345, title: "Oh oh Error", street: "", zip: "", city: "", geoLocation: "",  description: "", imageURL:"")
+    static let `default` = RealState(id: 12345, title: "Oh oh Error", street: "", zip: "", city: "", geoLocation: "", price: 12345, description: "", imageURL: "")
 }
 
 extension RealState: Decodable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(Float.self, forKey: .id)
+        price = try values.decodeIfPresent(Float.self, forKey: .price) ?? 0
         imageURL = try values.decode(String.self, forKey: .imageURL)
         title = try values.decode(String.self, forKey: .title)
         street = try values.decode(String.self, forKey: .street)
         zip = try values.decode(String.self, forKey: .zip)
         city = try values.decode(String.self, forKey: .city)
         geoLocation = try values.decode(String.self, forKey: .geoLocation)
-        //price = try values.decode(Float.self, forKey: .price)
         description = try values.decode(String.self, forKey: .description)
         imageURL = try values.decode(String.self, forKey: .imageURL)
     }
