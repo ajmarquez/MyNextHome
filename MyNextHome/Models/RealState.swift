@@ -17,15 +17,16 @@ struct RealState {
     var price: Float
     var description: String
     var imageURL: String
+    var currency: String
     
     enum CodingKeys: String, CodingKey {
-        case title, street, zip, city, geoLocation, description
+        case title, street, zip, city, geoLocation, description, currency
         case id = "advertisementId"
         case imageURL = "picFilename1"
         case price = "sellingPrice"
     }
     
-    static let `default` = RealState(id: 12345, title: "Oh oh Error", street: "", zip: "", city: "", geoLocation: "", price: 12345, description: "", imageURL: "")
+    static let `default` = RealState(id: 12345, title: "Oh oh Error", street: "", zip: "", city: "", geoLocation: "", price: 12345, description: "", imageURL: "", currency: "EUR")
 }
 
 extension RealState: Decodable {
@@ -41,6 +42,7 @@ extension RealState: Decodable {
         geoLocation = try values.decode(String.self, forKey: .geoLocation)
         description = try values.decode(String.self, forKey: .description)
         imageURL = try values.decode(String.self, forKey: .imageURL)
+        currency = try values.decode(String.self, forKey: .currency)
     }
 }
 
