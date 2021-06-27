@@ -38,7 +38,7 @@ class ListViewController: UIViewController {
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
-    //TODO: Approach not working as it should. find the right way to integrate Combine
+    
     func requestList() {
         let api = HomegateAPI()
         api.loadRealStates()
@@ -48,15 +48,18 @@ class ListViewController: UIViewController {
             })
             .store(in: &cancellables)
     }
-//
+
 //    func requestList() {
 //        URLSession.shared.dataTask(with: URLRequest(url: URL(string: Endpoint.realStateList.url.absoluteString)!)) {
 //            data, response, error in
 //
 //            if let data = data {
 //                let jsonDecoder = JSONDecoder()
+//                print("Data: \(data)")
 //                do {
-//                    let parsedJson = try jsonDecoder.decode(NetworkResponse<[RealState]>.self, from: data)
+//
+//                    let parsedJson = try jsonDecoder.decode(RealStateResponse.self, from: data)
+//                    print(parsedJson)
 //                    print(parsedJson.items)
 //                } catch {
 //                    print(error)
