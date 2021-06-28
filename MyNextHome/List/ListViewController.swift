@@ -24,6 +24,8 @@ final class ListViewController: UIViewController {
             self.tableView.reloadData()
         }
     }
+    private let cache = NSCache<NSNumber, UIImage>()
+    private let utilityQueue = DispatchQueue.global(qos: .utility)
     private var cancellables: Set<AnyCancellable> = []
     
     init(with viewModel: RealStateViewModel) {
@@ -75,7 +77,32 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
         return CGFloat(viewModel.getHeightofRows())
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        guard let cell = cell as? ListViewCell else { return }
+        
+        let itemNumber = NSNumber(value: indexPath.item)
+        
+        if let cachedImage = self.cache.object(forKey: itemNumber) {
+            print("Using a cached image for item: \(itemNumber)")
+            cell.realStateImage.image = cachedImage
+        } else {
+            self.loadImage(with: array[indexPath.row]) { [weak self] (image) in
+                guard let self = self, let image = image else { return }
+                
+                cell.realStateImage.image = image
+                
+                self.cache.setObject(image, forKey: itemNumber)
+            }
+        }
+    }
 }
+    
+
 
 extension ListViewController {
     func bindViewModel() {
@@ -86,5 +113,18 @@ extension ListViewController {
                 print("bindViewModel: This is the array:\(array)")
             }
             .store(in: &cancellables)
+    }
+    
+    func loadImage(with model: RealState, completion: @escaping (UIImage?) -> ()) {
+        utilityQueue.async {
+            let url = HomegateAPI.getImageURL(for: model)
+            
+            guard let data = try? Data(contentsOf: url) else { return }
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }
     }
 }

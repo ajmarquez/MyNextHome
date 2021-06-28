@@ -15,8 +15,6 @@ class ListViewCell: UITableViewCell {
             priceLabel.text = priceLabelText(realState)
             detailsLabel.text = detailsLabelText(realState)
             headlineLabel.text = realState?.title ?? "Error"
-
-            self.loadImage(with: realState)
         }
     }
     
@@ -60,7 +58,7 @@ class ListViewCell: UITableViewCell {
       return view
     }()
     
-    private var realStateImage: UIImageView = {
+    var realStateImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "placeholder")
@@ -74,6 +72,13 @@ class ListViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
+    override func prepareForReuse() {
+           super.prepareForReuse()
+           
+        self.realStateImage.image = nil
+       }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
