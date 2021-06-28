@@ -8,7 +8,10 @@
 import Foundation
 import Combine
 
-class HomegateAPI {
+protocol NetworkService {
+}
+
+class HomegateAPI: NetworkService {
     var urlSession = URLSession.shared
     
     func loadRealStates() -> AnyPublisher<RealStateResponse, Error> {
@@ -37,6 +40,8 @@ extension HomegateAPI {
                 "Invalid URL Components: \(workingURL)"
             )
         }
+        
+        print("🥦This is the final url: \(finalURL)")
         return finalURL
     }
 }

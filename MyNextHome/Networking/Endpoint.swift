@@ -24,7 +24,7 @@ extension Endpoint {
             "Invalid URL Components: \(components)"
             )
         }
-        print(url)
+        print("Endpoint Extension:\(url)")
         return url
     }
 }

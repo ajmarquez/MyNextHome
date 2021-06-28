@@ -21,8 +21,12 @@ extension UIImage {
                 print("realStateImage(from realState:) ->There was an error getting the Image")
                 return
             }
-            let image = UIImage(data: data)
-            completion(image)
+            
+            DispatchQueue.main.async {
+                let image = UIImage(data: data)
+                completion(image)
+            }
+           
         }.resume()
     }
 }

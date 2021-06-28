@@ -10,6 +10,7 @@
 		1C35A0CF2688B1BF005DE82C /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0CE2688B1BF005DE82C /* ListViewCell.swift */; };
 		1C35A0D22688C526005DE82C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D12688C526005DE82C /* Colors.swift */; };
 		1C35A0D42688C7BE005DE82C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */; };
+		1C35A0D8268A0655005DE82C /* RealStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */; };
 		1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */; };
 		1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */; };
 		1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D22686655A00BC5658 /* ViewController.swift */; };
@@ -23,7 +24,6 @@
 		1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */; };
 		1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */; };
 		1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F5268684F000BC5658 /* RealState.swift */; };
-		1CC0D6F82686883500BC5658 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F72686883500BC5658 /* ListViewModel.swift */; };
 		1CC0D6FB26876C8C00BC5658 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6FA26876C8C00BC5658 /* NetworkService.swift */; };
 		1CC0D6FD268783A700BC5658 /* HomegateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6FC268783A700BC5658 /* HomegateAPI.swift */; };
 		1CC0D6FF268785EC00BC5658 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6FE268785EC00BC5658 /* Endpoint.swift */; };
@@ -34,6 +34,7 @@
 		1C35A0CE2688B1BF005DE82C /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		1C35A0D12688C526005DE82C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealStateViewModel.swift; sourceTree = "<group>"; };
 		1CC0D6CB2686655A00BC5658 /* MyNextHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNextHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +50,6 @@
 		1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		1CC0D6F5268684F000BC5658 /* RealState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealState.swift; sourceTree = "<group>"; };
-		1CC0D6F72686883500BC5658 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		1CC0D6FA26876C8C00BC5658 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1CC0D6FC268783A700BC5658 /* HomegateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomegateAPI.swift; sourceTree = "<group>"; };
 		1CC0D6FE268785EC00BC5658 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -144,8 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				1CC0D6ED268674F700BC5658 /* ListViewController.swift */,
-				1CC0D6F72686883500BC5658 /* ListViewModel.swift */,
 				1C35A0CE2688B1BF005DE82C /* ListViewCell.swift */,
+				1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -240,6 +240,7 @@
 			files = (
 				1CC0D6FF268785EC00BC5658 /* Endpoint.swift in Sources */,
 				1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */,
+				1C35A0D8268A0655005DE82C /* RealStateViewModel.swift in Sources */,
 				1CC0D6FD268783A700BC5658 /* HomegateAPI.swift in Sources */,
 				1C35A0D22688C526005DE82C /* Colors.swift in Sources */,
 				1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */,
@@ -255,7 +256,6 @@
 				1CC0D7012687EA2200BC5658 /* NetworkResponse.swift in Sources */,
 				1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */,
 				1CC0D6FB26876C8C00BC5658 /* NetworkService.swift in Sources */,
-				1CC0D6F82686883500BC5658 /* ListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

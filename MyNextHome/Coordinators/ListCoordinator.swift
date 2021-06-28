@@ -15,7 +15,8 @@ class ListCoordinator: Coordinator {
     init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
         
-        let vc = ListViewController()
+        print("ListCoordinator")
+        let vc = ListViewController(with: RealStateViewModel(with: HomegateAPI()))
         vc.view.backgroundColor = .red
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
         

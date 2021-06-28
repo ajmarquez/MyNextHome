@@ -15,7 +15,8 @@ class ListViewCell: UITableViewCell {
             priceLabel.text = priceLabelText(realState)
             detailsLabel.text = detailsLabelText(realState)
             headlineLabel.text = realState?.title ?? "Error"
-            
+
+            self.loadImage(with: realState)
         }
     }
     
@@ -59,12 +60,13 @@ class ListViewCell: UITableViewCell {
       return view
     }()
     
-    private var image: UIImageView = {
+    private var realStateImage: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
         image.image = UIImage(named: "placeholder")
         image.translatesAutoresizingMaskIntoConstraints = false
         image.clipsToBounds = true
+                
         return image
     }()
         
@@ -75,19 +77,19 @@ class ListViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.contentView.addSubview(image)
+        self.contentView.addSubview(realStateImage)
         containerView.addSubview(priceLabel)
         containerView.addSubview(headlineLabel)
         containerView.addSubview(detailsLabel)
         self.contentView.addSubview(containerView)
         
   
-        image.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
-        image.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
-        image.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
-        image.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        realStateImage.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
+        realStateImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
+        realStateImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
+        realStateImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
         
-        containerView.topAnchor.constraint(equalTo: image.bottomAnchor).isActive = true
+        containerView.topAnchor.constraint(equalTo: realStateImage.bottomAnchor).isActive = true
         containerView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
         containerView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
         containerView.heightAnchor.constraint(equalToConstant: 100).isActive = true
@@ -126,6 +128,14 @@ extension ListViewCell {
         }
         
         return(item.street + ", " + item.city)
+    }
+    
+    func loadImage(with realState: RealState?) {
+        
+        guard let realState = realState else { return }
+        UIImage.realStateImage(from: realState, completion: { [weak self] image in
+            self?.realStateImage.image = image
+        })
     }
     
 }

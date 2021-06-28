@@ -7,26 +7,43 @@
 
 import Foundation
 import UIKit
+import Combine
 
-protocol ListViewDelegate {
-    func didSelectItem()
-    func reloadListData()
+protocol ListViewModel {
+    func getRealStateList()
+    func getHeightofRows() -> Int
 }
 
-
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
     
-    var listDelegate: ListViewDelegate!
+    
+    var viewModel: RealStateViewModel
     let tableView = UITableView()
-    let demoArray = RealState.demoArray
+    var array: [RealState] = [] {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    private var cancellables: Set<AnyCancellable> = []
     
-
+    init(with viewModel: RealStateViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(demoArray)
+        bindViewModel()
+
+       //Set Delegate
         tableView.dataSource = self
         tableView.delegate = self
+        
+        //Add table
         setTableView()
         tableView.register(ListViewCell.self, forCellReuseIdentifier: "listCell")
     }
@@ -44,18 +61,30 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        demoArray.count
+        array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
-        cell.realState = demoArray[indexPath.row]
-        print(demoArray[indexPath.row])
+        cell.realState = array[indexPath.row]
+        print("From the cell: \(array[indexPath.row])")
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return CGFloat(viewModel.getHeightofRows())
     }
     
+}
+
+extension ListViewController {
+    func bindViewModel() {
+        viewModel.$array
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] array in
+                self?.array = array
+                print("bindViewModel: This is the array:\(array)")
+            }
+            .store(in: &cancellables)
+    }
 }
