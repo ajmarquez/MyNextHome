@@ -11,6 +11,7 @@
 		1C35A0D22688C526005DE82C /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D12688C526005DE82C /* Colors.swift */; };
 		1C35A0D42688C7BE005DE82C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */; };
 		1C35A0D8268A0655005DE82C /* RealStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */; };
+		1C35A0DA268B2303005DE82C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D9268B2303005DE82C /* Constants.swift */; };
 		1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */; };
 		1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */; };
 		1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D22686655A00BC5658 /* ViewController.swift */; };
@@ -35,6 +36,7 @@
 		1C35A0D12688C526005DE82C /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealStateViewModel.swift; sourceTree = "<group>"; };
+		1C35A0D9268B2303005DE82C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		1CC0D6CB2686655A00BC5658 /* MyNextHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNextHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 			children = (
 				1C35A0D12688C526005DE82C /* Colors.swift */,
 				1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */,
+				1C35A0D9268B2303005DE82C /* Constants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1CC0D6FF268785EC00BC5658 /* Endpoint.swift in Sources */,
+				1C35A0DA268B2303005DE82C /* Constants.swift in Sources */,
 				1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */,
 				1C35A0D8268A0655005DE82C /* RealStateViewModel.swift in Sources */,
 				1CC0D6FD268783A700BC5658 /* HomegateAPI.swift in Sources */,

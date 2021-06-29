@@ -10,8 +10,10 @@ import UIKit
 
 struct Colors {
     
-    static let mainFont = UIColor(named: "MidnightText")
+    static let mainText = UIColor(named: "mainText")
     static let mainBackground = UIColor(named: "MidnightBackground")
+    static let subtitleText = UIColor(named: "subtitleText")
+    static let nightColor = UIColor(named: "night")
     
     
 }

@@ -39,8 +39,5 @@ final class RealStateViewModel: ListViewModel {
     
     func didFavoriteRealState() {}
     
-    func getHeightofRows() -> Int {
-        return 300
-    }
     
 }

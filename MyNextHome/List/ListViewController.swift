@@ -57,11 +57,17 @@ final class ListViewController: UIViewController {
         tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.allowsSelection = false
+        tableView.backgroundColor = Colors.mainBackground
+        tableView.separatorStyle = .none
+        tableView.contentInset.top = Constants.Cell.tableTopInset
     }
     
 }
 
 extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    //TableView Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         array.count
     }
@@ -69,20 +75,20 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
         cell.realState = array[indexPath.row]
-        print("From the cell: \(array[indexPath.row])")
         return cell
     }
     
+    //TableView Delegate Methods
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(viewModel.getHeightofRows())
+        return Constants.Cell.mainCellsize + 10
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return Constants.Cell.imageMargin
     }
     
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
         guard let cell = cell as? ListViewCell else { return }
         
         let itemNumber = NSNumber(value: indexPath.item)
@@ -95,16 +101,17 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
                 guard let self = self, let image = image else { return }
                 
                 cell.realStateImage.image = image
-                
                 self.cache.setObject(image, forKey: itemNumber)
             }
         }
     }
 }
-    
+
 
 
 extension ListViewController {
+    
+    //Used to binf the viewModel and the ViewController together
     func bindViewModel() {
         viewModel.$array
             .receive(on: DispatchQueue.main)
@@ -115,6 +122,7 @@ extension ListViewController {
             .store(in: &cancellables)
     }
     
+    //SPECIAL CASE: Load image using a re-formated URL for images
     func loadImage(with model: RealState, completion: @escaping (UIImage?) -> ()) {
         utilityQueue.async {
             let url = HomegateAPI.getImageURL(for: model)
