@@ -13,12 +13,12 @@ protocol ListViewModel {
     func getRealStateList()
 }
 
-final class ListViewController: UIViewController {
+final class RealStateViewController: UIViewController {
     
     
     var viewModel: RealStateViewModel
-    let tableView = UITableView()
-    var array: [RealState] = [] {
+    let tableView = MainTableView()
+    lazy var array: [RealState] = [] {
         didSet{
             self.tableView.reloadData()
         }
@@ -38,7 +38,7 @@ final class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindViewModel()
+       bindViewModel()
 
        //Set Delegate
         tableView.dataSource = self
@@ -51,20 +51,12 @@ final class ListViewController: UIViewController {
     
     func setTableView() {
         view.addSubview(tableView)
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.allowsSelection = false
-        tableView.backgroundColor = Colors.mainBackground
-        tableView.separatorStyle = .none
-        tableView.contentInset.top = Constants.Cell.tableTopInset
+        tableView.setContrains(view: self.view)
     }
     
 }
 
-extension ListViewController: UITableViewDataSource, UITableViewDelegate {
+extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
     
     //TableView Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -81,7 +73,7 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.Cell.mainCellsize + 10
     }
-    
+
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return Constants.Cell.imageMargin
     }
@@ -90,13 +82,32 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ListViewCell else { return }
         
+        self.implementCaching(for: cell, at: indexPath)
+    }
+}
+
+// MARK: - Utility methods
+
+extension RealStateViewController {
+    
+    //Used to bind the viewModel and the ViewController together
+    func bindViewModel() {
+        viewModel.$array
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] array in
+                self?.array = array
+            }
+            .store(in: &cancellables)
+    }
+    
+    //Used to implement cache on the images
+    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath) {
         let itemNumber = NSNumber(value: indexPath.item)
         
         if let cachedImage = self.cache.object(forKey: itemNumber) {
-            print("Using a cached image for item: \(itemNumber)")
             cell.realStateImage.image = cachedImage
         } else {
-            self.loadImage(with: array[indexPath.row]) { [weak self] (image) in
+            UIImage.loadImage(with: array[indexPath.row],dispatchQueue: utilityQueue ) { [weak self] (image) in
                 guard let self = self, let image = image else { return }
                 
                 cell.realStateImage.image = image
@@ -104,34 +115,5 @@ extension ListViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
     }
-}
 
-
-
-extension ListViewController {
-    
-    //Used to binf the viewModel and the ViewController together
-    func bindViewModel() {
-        viewModel.$array
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] array in
-                self?.array = array
-                print("bindViewModel: This is the array:\(array)")
-            }
-            .store(in: &cancellables)
-    }
-    
-    //SPECIAL CASE: Load image using a re-formated URL for images
-    func loadImage(with model: RealState, completion: @escaping (UIImage?) -> ()) {
-        utilityQueue.async {
-            let url = HomegateAPI.getImageURL(for: model)
-            
-            guard let data = try? Data(contentsOf: url) else { return }
-            let image = UIImage(data: data)
-            
-            DispatchQueue.main.async {
-                completion(image)
-            }
-        }
-    }
 }

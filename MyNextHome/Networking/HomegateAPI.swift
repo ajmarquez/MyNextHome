@@ -40,8 +40,6 @@ extension HomegateAPI {
                 "Invalid URL Components: \(workingURL)"
             )
         }
-        
-        print("🥦This is the final url: \(finalURL)")
         return finalURL
     }
 }

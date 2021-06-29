@@ -15,6 +15,8 @@
 		1C39C809268B3E040046EB75 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C808268B3E030046EB75 /* MainTabBarController.swift */; };
 		1C39C80C268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C80A268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld */; };
 		1C39C832268B463A0046EB75 /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C831268B463A0046EB75 /* FavoritesRepository.swift */; };
+		1C39C836268B5DCB0046EB75 /* MainTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C835268B5DCB0046EB75 /* MainTableView.swift */; };
+		1C39C838268B77630046EB75 /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C837268B77630046EB75 /* FavoritesViewModel.swift */; };
 		1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */; };
 		1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */; };
 		1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D22686655A00BC5658 /* ViewController.swift */; };
@@ -23,7 +25,7 @@
 		1CC0D6DB2686655B00BC5658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D92686655B00BC5658 /* LaunchScreen.storyboard */; };
 		1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6E7268669A100BC5658 /* Coordinator.swift */; };
 		1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */; };
-		1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6ED268674F700BC5658 /* ListViewController.swift */; };
+		1CC0D6EE268674F700BC5658 /* RealStateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6ED268674F700BC5658 /* RealStateViewController.swift */; };
 		1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */; };
 		1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */; };
 		1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F5268684F000BC5658 /* RealState.swift */; };
@@ -42,6 +44,8 @@
 		1C39C808268B3E030046EB75 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		1C39C80B268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		1C39C831268B463A0046EB75 /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
+		1C39C835268B5DCB0046EB75 /* MainTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableView.swift; sourceTree = "<group>"; };
+		1C39C837268B77630046EB75 /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
 		1CC0D6CB2686655A00BC5658 /* MyNextHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNextHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +56,7 @@
 		1CC0D6DC2686655B00BC5658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC0D6E7268669A100BC5658 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
-		1CC0D6ED268674F700BC5658 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		1CC0D6ED268674F700BC5658 /* RealStateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealStateViewController.swift; sourceTree = "<group>"; };
 		1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
 		1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		1CC0D6F5268684F000BC5658 /* RealState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealState.swift; sourceTree = "<group>"; };
@@ -91,6 +95,15 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		1C39C834268B5DA00046EB75 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				1C35A0CE2688B1BF005DE82C /* ListViewCell.swift */,
+				1C39C835268B5DCB0046EB75 /* MainTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		1CC0D6C22686655A00BC5658 = {
 			isa = PBXGroup;
 			children = (
@@ -112,10 +125,9 @@
 			children = (
 				1CC0D6F926876C3000BC5658 /* Networking */,
 				1CC0D6E2268665ED00BC5658 /* Models */,
+				1CC0D6E52686662C00BC5658 /* ViewModels */,
+				1CC0D6E42686662300BC5658 /* Views */,
 				1CC0D6E3268665F400BC5658 /* Coordinators */,
-				1CC0D6E42686662300BC5658 /* Main */,
-				1CC0D6E52686662C00BC5658 /* List */,
-				1CC0D6E62686663300BC5658 /* Favorites */,
 				1C35A0D02688C519005DE82C /* Utils */,
 				1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */,
 				1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */,
@@ -149,30 +161,24 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		1CC0D6E42686662300BC5658 /* Main */ = {
+		1CC0D6E42686662300BC5658 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				1C39C834268B5DA00046EB75 /* TableView */,
 				1C39C808268B3E030046EB75 /* MainTabBarController.swift */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		1CC0D6E52686662C00BC5658 /* List */ = {
-			isa = PBXGroup;
-			children = (
-				1CC0D6ED268674F700BC5658 /* ListViewController.swift */,
-				1C35A0CE2688B1BF005DE82C /* ListViewCell.swift */,
-				1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */,
-			);
-			path = List;
-			sourceTree = "<group>";
-		};
-		1CC0D6E62686663300BC5658 /* Favorites */ = {
-			isa = PBXGroup;
-			children = (
+				1CC0D6ED268674F700BC5658 /* RealStateViewController.swift */,
 				1CC0D6F32686843500BC5658 /* FavoritesViewController.swift */,
 			);
-			path = Favorites;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		1CC0D6E52686662C00BC5658 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */,
+				1C39C837268B77630046EB75 /* FavoritesViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		1CC0D6F926876C3000BC5658 /* Networking */ = {
@@ -265,6 +271,7 @@
 				1C39C832268B463A0046EB75 /* FavoritesRepository.swift in Sources */,
 				1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */,
 				1C35A0CF2688B1BF005DE82C /* ListViewCell.swift in Sources */,
+				1C39C836268B5DCB0046EB75 /* MainTableView.swift in Sources */,
 				1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */,
 				1C39C80C268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld in Sources */,
 				1C35A0D42688C7BE005DE82C /* UIImage+Extension.swift in Sources */,
@@ -272,8 +279,9 @@
 				1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */,
 				1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */,
 				1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */,
-				1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */,
+				1CC0D6EE268674F700BC5658 /* RealStateViewController.swift in Sources */,
 				1CC0D7012687EA2200BC5658 /* NetworkResponse.swift in Sources */,
+				1C39C838268B77630046EB75 /* FavoritesViewModel.swift in Sources */,
 				1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */,
 				1CC0D6FB26876C8C00BC5658 /* NetworkService.swift in Sources */,
 			);

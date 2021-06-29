@@ -30,4 +30,18 @@ extension UIImage {
         }.resume()
     }
     
+    //SPECIAL CASE: Load image using a re-formated URL for images
+    static func loadImage(with model: RealState,dispatchQueue: DispatchQueue, completion: @escaping (UIImage?) -> ()) {
+        dispatchQueue.async {
+            let url = HomegateAPI.getImageURL(for: model)
+            
+            guard let data = try? Data(contentsOf: url) else { return }
+            let image = UIImage(data: data)
+            
+            DispatchQueue.main.async {
+                completion(image)
+            }
+        }
+    }
+    
 }
