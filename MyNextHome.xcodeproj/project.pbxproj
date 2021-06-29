@@ -12,6 +12,9 @@
 		1C35A0D42688C7BE005DE82C /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */; };
 		1C35A0D8268A0655005DE82C /* RealStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */; };
 		1C35A0DA268B2303005DE82C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C35A0D9268B2303005DE82C /* Constants.swift */; };
+		1C39C809268B3E040046EB75 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C808268B3E030046EB75 /* MainTabBarController.swift */; };
+		1C39C80C268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C80A268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld */; };
+		1C39C832268B463A0046EB75 /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C39C831268B463A0046EB75 /* FavoritesRepository.swift */; };
 		1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */; };
 		1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */; };
 		1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D22686655A00BC5658 /* ViewController.swift */; };
@@ -19,7 +22,6 @@
 		1CC0D6D82686655B00BC5658 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D72686655B00BC5658 /* Assets.xcassets */; };
 		1CC0D6DB2686655B00BC5658 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CC0D6D92686655B00BC5658 /* LaunchScreen.storyboard */; };
 		1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6E7268669A100BC5658 /* Coordinator.swift */; };
-		1CC0D6EA268671AD00BC5658 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */; };
 		1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */; };
 		1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6ED268674F700BC5658 /* ListViewController.swift */; };
 		1CC0D6F2268676F900BC5658 /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */; };
@@ -37,6 +39,9 @@
 		1C35A0D32688C7BE005DE82C /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
 		1C35A0D7268A0655005DE82C /* RealStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealStateViewModel.swift; sourceTree = "<group>"; };
 		1C35A0D9268B2303005DE82C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1C39C808268B3E030046EB75 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		1C39C80B268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoritesCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		1C39C831268B463A0046EB75 /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
 		1CC0D6CB2686655A00BC5658 /* MyNextHome.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyNextHome.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CC0D6CE2686655A00BC5658 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1CC0D6D02686655A00BC5658 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,7 +51,6 @@
 		1CC0D6DA2686655B00BC5658 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CC0D6DC2686655B00BC5658 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1CC0D6E7268669A100BC5658 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainTabBarController.swift; path = MyNextHome/Home/MainTabBarController.swift; sourceTree = SOURCE_ROOT; };
 		1CC0D6EB268673C800BC5658 /* ListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCoordinator.swift; sourceTree = "<group>"; };
 		1CC0D6ED268674F700BC5658 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		1CC0D6F1268676F900BC5658 /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
@@ -79,6 +83,14 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		1C39C80D268B42AD0046EB75 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				1C39C80A268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		1CC0D6C22686655A00BC5658 = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +113,7 @@
 				1CC0D6F926876C3000BC5658 /* Networking */,
 				1CC0D6E2268665ED00BC5658 /* Models */,
 				1CC0D6E3268665F400BC5658 /* Coordinators */,
-				1CC0D6E42686662300BC5658 /* Home */,
+				1CC0D6E42686662300BC5658 /* Main */,
 				1CC0D6E52686662C00BC5658 /* List */,
 				1CC0D6E62686663300BC5658 /* Favorites */,
 				1C35A0D02688C519005DE82C /* Utils */,
@@ -119,8 +131,10 @@
 		1CC0D6E2268665ED00BC5658 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				1C39C80D268B42AD0046EB75 /* CoreData */,
 				1CC0D6F5268684F000BC5658 /* RealState.swift */,
 				1CC0D7002687EA2200BC5658 /* NetworkResponse.swift */,
+				1C39C831268B463A0046EB75 /* FavoritesRepository.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -135,12 +149,12 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		1CC0D6E42686662300BC5658 /* Home */ = {
+		1CC0D6E42686662300BC5658 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				1CC0D6E9268671AD00BC5658 /* MainTabBarController.swift */,
+				1C39C808268B3E030046EB75 /* MainTabBarController.swift */,
 			);
-			path = Home;
+			path = Main;
 			sourceTree = "<group>";
 		};
 		1CC0D6E52686662C00BC5658 /* List */ = {
@@ -243,17 +257,19 @@
 			files = (
 				1CC0D6FF268785EC00BC5658 /* Endpoint.swift in Sources */,
 				1C35A0DA268B2303005DE82C /* Constants.swift in Sources */,
+				1C39C809268B3E040046EB75 /* MainTabBarController.swift in Sources */,
 				1CC0D6E8268669A100BC5658 /* Coordinator.swift in Sources */,
 				1C35A0D8268A0655005DE82C /* RealStateViewModel.swift in Sources */,
 				1CC0D6FD268783A700BC5658 /* HomegateAPI.swift in Sources */,
 				1C35A0D22688C526005DE82C /* Colors.swift in Sources */,
+				1C39C832268B463A0046EB75 /* FavoritesRepository.swift in Sources */,
 				1CC0D6F42686843500BC5658 /* FavoritesViewController.swift in Sources */,
 				1C35A0CF2688B1BF005DE82C /* ListViewCell.swift in Sources */,
 				1CC0D6D32686655A00BC5658 /* ViewController.swift in Sources */,
+				1C39C80C268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld in Sources */,
 				1C35A0D42688C7BE005DE82C /* UIImage+Extension.swift in Sources */,
 				1CC0D6F6268684F000BC5658 /* RealState.swift in Sources */,
 				1CC0D6EC268673C800BC5658 /* ListCoordinator.swift in Sources */,
-				1CC0D6EA268671AD00BC5658 /* MainTabBarController.swift in Sources */,
 				1CC0D6CF2686655A00BC5658 /* AppDelegate.swift in Sources */,
 				1CC0D6D12686655A00BC5658 /* SceneDelegate.swift in Sources */,
 				1CC0D6EE268674F700BC5658 /* ListViewController.swift in Sources */,
@@ -461,6 +477,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1C39C80A268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1C39C80B268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 1C39C80B268B429F0046EB75 /* FavoritesCoreDataModel.xcdatamodel */;
+			path = FavoritesCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1CC0D6C32686655A00BC5658 /* Project object */;
 }

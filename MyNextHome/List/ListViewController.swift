@@ -11,7 +11,6 @@ import Combine
 
 protocol ListViewModel {
     func getRealStateList()
-    func getHeightofRows() -> Int
 }
 
 final class ListViewController: UIViewController {
