@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-final class RealStateViewModel: ListViewModel {
+final class RealStateViewModel {
     typealias RealStateList = [RealState]
     var networkService: HomegateAPI
     @Published private(set) var array: [RealState] = []

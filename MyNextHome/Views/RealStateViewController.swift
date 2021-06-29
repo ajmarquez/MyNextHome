@@ -9,9 +9,6 @@ import Foundation
 import UIKit
 import Combine
 
-protocol ListViewModel {
-    func getRealStateList()
-}
 
 final class RealStateViewController: UIViewController {
     
@@ -24,7 +21,6 @@ final class RealStateViewController: UIViewController {
         }
     }
     private let cache = NSCache<NSNumber, UIImage>()
-    private let utilityQueue = DispatchQueue.global(qos: .utility)
     private var cancellables: Set<AnyCancellable> = []
     
     init(with viewModel: RealStateViewModel) {
@@ -38,9 +34,9 @@ final class RealStateViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       bindViewModel()
-
-       //Set Delegate
+        bindViewModel()        
+    
+        //Set Delegate
         tableView.dataSource = self
         tableView.delegate = self
         
@@ -65,7 +61,10 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
- //       cell.realState = array[indexPath.row]
+        let item = array[indexPath.row]
+        cell.setPriceLabelText(currency: item.currency, price: item.price)
+        cell.setTitleText(title: item.title)
+        cell.setDetailsLabelText(street: item.street, city: item.city)
         return cell
     }
     
@@ -78,12 +77,11 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
         return Constants.Cell.imageMargin
     }
     
-    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ListViewCell else { return }
+        let item = array[indexPath.row]
         
-        
-        self.implementCaching(for: cell, at: indexPath, withURL: "someurl")
+        self.implementCaching(for: cell, at: indexPath, withURL: item.imageURL)
     }
 }
 
@@ -109,7 +107,7 @@ extension RealStateViewController {
             cell.realStateImage.image = cachedImage
         } else {
             
-            UIImage.loadImage(with: withURL) { [weak self] image in
+            UIImage.realStateImage(from: withURL) { [weak self] image in
                 guard let self = self, let image = image else { return }
                 
                 cell.realStateImage.image = image

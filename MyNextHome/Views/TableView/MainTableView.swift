@@ -10,7 +10,6 @@ import UIKit
 
 class MainTableView: UITableView {
     
-    
     override init(frame: CGRect, style: UITableView.Style) {
         super.init(frame: frame, style: style)
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -32,6 +31,7 @@ class MainTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
 
 
 

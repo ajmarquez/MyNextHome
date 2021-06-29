@@ -10,13 +10,6 @@ import UIKit
 
 class ListViewCell: UITableViewCell {
       
-    func updateCell(price: String, title: String, detail: String) {
-        priceLabel.text = price
-        headlineLabel.text = title
-        detailsLabel.text = detail
-    }
-
-    
     private var priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = Colors.mainText
@@ -140,15 +133,12 @@ extension ListViewCell {
         priceLabel.text = (currency + " " + price.description)
     }
     
-    func detailsLabelText(street: String, city: String) {
+    func setDetailsLabelText(street: String, city: String) {
         detailsLabel.text = (street + ", " + city)
     }
     
-    func loadImage(imageURL: String) {
-        
-        UIImage.loadImage(with: imageURL) { [weak self] img in
-            self?.realStateImage.image = img
-        }
+    func setTitleText(title: String) {
+        headlineLabel.text = title
     }
     
 }

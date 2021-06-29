@@ -2,7 +2,7 @@
 //  FavoritedItem+CoreDataProperties.swift
 //  MyNextHome
 //
-//  Created by Abelardo Marquez on 29.06.21.
+//  Created by Abelardo Marquez on 30.06.21.
 //
 //
 
@@ -16,8 +16,8 @@ extension FavoritedItem {
         return NSFetchRequest<FavoritedItem>(entityName: "FavoritedItem")
     }
 
-    @NSManaged public var city: String?
-    @NSManaged public var currency: String?
+    @NSManaged public var city: String
+    @NSManaged public var currency: String
     @NSManaged public var geoLocation: String?
     @NSManaged public var id: Float
     @NSManaged public var imageURL: String?

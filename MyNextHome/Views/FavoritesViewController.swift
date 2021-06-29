@@ -13,7 +13,7 @@ final class FavoritesViewController: UIViewController, NSFetchedResultsControlle
     
     let tableView = MainTableView()
     let viewModel: FavoritesViewModel
-    
+    private let cache = NSCache<NSNumber, UIImage>()
     private var container: NSPersistentContainer!
     
     
@@ -34,6 +34,8 @@ final class FavoritesViewController: UIViewController, NSFetchedResultsControlle
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(ListViewCell.self, forCellReuseIdentifier: "listCell")
+
         
         
     }
@@ -65,11 +67,87 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellList", for: indexPath) as! ListViewCell 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
         
-        let item = viewModel.fetchedResultsController.object(at: indexPath) as FavoritedItem
-        print(item.city)
+        let item = viewModel.fetchedResultsController.object(at: indexPath)
+        
+        cell.setPriceLabelText(currency: item.currency, price: item.price)  
         
         return cell
+    }
+    
+    //TableView Delegate Methods
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return Constants.Cell.mainCellsize + 10
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Constants.Cell.imageMargin
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? ListViewCell else { return }
+        let item = viewModel.fetchedResultsController.object(at: indexPath)
+        
+        guard let imageURL = item.imageURL else { return }
+        self.implementCaching(for: cell, at: indexPath, withURL: imageURL)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        let item = viewModel.fetchedResultsController.object(at: indexPath)
+        if editingStyle == .delete {
+            viewModel.deleteItem(with: item.id)
+        }
+    }
+    
+    //FetchedResult Delegate
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            tableView.deleteRows(at: [indexPath!], with: .fade)
+        case .update:
+                tableView.reloadRows(at: [indexPath!], with: .fade)
+        case .move:
+                tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        }
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+    }
+}
+
+extension FavoritesViewController {
+    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath, withURL: String) {
+        let itemNumber = NSNumber(value: indexPath.item)
+        
+        if let cachedImage = self.cache.object(forKey: itemNumber) { 
+            cell.realStateImage.image = cachedImage
+        } else {
+            
+            if withURL.isEmpty || withURL.count < 3 {
+                cell.realStateImage.image = UIImage(named: "placeholder")
+            } else {
+                
+                UIImage.realStateImage(from: withURL) { [weak self] image in
+                    guard let self = self, let image = image else { return }
+                    
+                    cell.realStateImage.image = image
+                    self.cache.setObject(image, forKey: itemNumber)
+                }
+            }
+        }
     }
 }
