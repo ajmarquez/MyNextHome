@@ -65,7 +65,7 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
-        cell.realState = array[indexPath.row]
+ //       cell.realState = array[indexPath.row]
         return cell
     }
     
@@ -82,7 +82,8 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ListViewCell else { return }
         
-        self.implementCaching(for: cell, at: indexPath)
+        
+        self.implementCaching(for: cell, at: indexPath, withURL: "someurl")
     }
 }
 
@@ -101,13 +102,14 @@ extension RealStateViewController {
     }
     
     //Used to implement cache on the images
-    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath) {
+    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath, withURL: String) {
         let itemNumber = NSNumber(value: indexPath.item)
         
         if let cachedImage = self.cache.object(forKey: itemNumber) {
             cell.realStateImage.image = cachedImage
         } else {
-            UIImage.loadImage(with: array[indexPath.row],dispatchQueue: utilityQueue ) { [weak self] (image) in
+            
+            UIImage.loadImage(with: withURL) { [weak self] image in
                 guard let self = self, let image = image else { return }
                 
                 cell.realStateImage.image = image

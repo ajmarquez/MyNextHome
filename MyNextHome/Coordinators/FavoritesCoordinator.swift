@@ -15,7 +15,12 @@ class FavoritesCoordinator: Coordinator {
     init(navigationController: UINavigationController = UINavigationController()) {
         self.navigationController = navigationController
         
-        let vc = FavoritesViewController(with: RealStateViewModel(with: HomegateAPI()))
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let container = appDelegate.persistentContainer
+        
+        
+        let vc = FavoritesViewController(with: FavoritesViewModel(with: container))
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         navigationController.viewControllers = [vc]
     }

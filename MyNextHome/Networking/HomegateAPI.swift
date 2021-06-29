@@ -21,9 +21,9 @@ class HomegateAPI: NetworkService {
 }
 
 extension HomegateAPI {
-    static func getImageURL(for item: RealState) -> URL {
+    static func getImageURL(for url: String) -> URL {
         
-        guard let mainUrl = URL(string: item.imageURL) else {
+        guard let mainUrl = URL(string: url) else {
             preconditionFailure("ImageURL from RealState Item could not be loaded")
         }
         

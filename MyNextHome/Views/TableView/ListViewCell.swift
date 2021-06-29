@@ -9,14 +9,13 @@ import Foundation
 import UIKit
 
 class ListViewCell: UITableViewCell {
-    
-    var realState: RealState? {
-        didSet {
-            priceLabel.text = priceLabelText(realState)
-            detailsLabel.text = detailsLabelText(realState)
-            headlineLabel.text = realState?.title ?? "Error"
-        }
+      
+    func updateCell(price: String, title: String, detail: String) {
+        priceLabel.text = price
+        headlineLabel.text = title
+        detailsLabel.text = detail
     }
+
     
     private var priceLabel: UILabel = {
         let label = UILabel()
@@ -137,28 +136,19 @@ class ListViewCell: UITableViewCell {
 extension ListViewCell {
     
     //Buils compound Labels
-    func priceLabelText(_ item: RealState?) -> String {
-        guard let item = item else {
-            return("Error creating String")
-        }
-        
-        return (item.currency + " " + item.price.description)
+    func setPriceLabelText(currency: String, price: Float) {
+        priceLabel.text = (currency + " " + price.description)
     }
     
-    func detailsLabelText(_ item: RealState?) -> String {
-        guard let item = item else {
-            return("Error creating String")
-        }
-        
-        return(item.street + ", " + item.city)
+    func detailsLabelText(street: String, city: String) {
+        detailsLabel.text = (street + ", " + city)
     }
     
-    func loadImage(with realState: RealState?) {
+    func loadImage(imageURL: String) {
         
-        guard let realState = realState else { return }
-        UIImage.realStateImage(from: realState, completion: { [weak self] image in
-            self?.realStateImage.image = image
-        })
+        UIImage.loadImage(with: imageURL) { [weak self] img in
+            self?.realStateImage.image = img
+        }
     }
     
 }

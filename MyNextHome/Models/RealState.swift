@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RealState { 
+struct RealState {
     var id: Float
     var title: String
     var street: String

@@ -7,23 +7,17 @@
 
 import Foundation
 import UIKit
-import Combine
+import CoreData
 
-final class FavoritesViewController: UIViewController {
+final class FavoritesViewController: UIViewController, NSFetchedResultsControllerDelegate {
     
-    
-    var viewModel: RealStateViewModel
     let tableView = MainTableView()
-    var array: [RealState] = [] {
-        didSet{
-            self.tableView.reloadData()
-        }
-    }
-    private let cache = NSCache<NSNumber, UIImage>()
-    private let utilityQueue = DispatchQueue.global(qos: .utility)
-    private var cancellables: Set<AnyCancellable> = []
+    let viewModel: FavoritesViewModel
     
-    init(with viewModel: RealStateViewModel) {
+    private var container: NSPersistentContainer!
+    
+    
+    init(with viewModel: FavoritesViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,85 +27,49 @@ final class FavoritesViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-       bindViewModel()
-
-       //Set Delegate
+        viewModel.loadSaveData(delegate: self)
+        tableView.reloadData()
+        view.addSubview(tableView)
+        tableView.setContrains(view: self.view)
+        
         tableView.dataSource = self
         tableView.delegate = self
         
-        //Add table
-        setTableView()
-        tableView.register(ListViewCell.self, forCellReuseIdentifier: "listCell")
+        
     }
     
-    func setTableView() {
-        view.addSubview(tableView)
-        tableView.setContrains(view: self.view)
-    }
+//    func loadSaveData() {
+//        if fetchedResultsController == nil {
+//            let request:  NSFetchRequest<FavoritedItem> = FavoritedItem.fetchRequest()
+//            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+//            fetchedResultsController.delegate = self
+//        }
+//
+//        do {
+//            try fetchedResultsController.performFetch()
+//            tableView.reloadData()
+//        } catch {
+//            print("Failed")
+//        }
+//    }
     
+   
 }
 
 extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
-    //TableView Data Source Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        array.count
+        guard let array = viewModel.fetchedResultsController.fetchedObjects else { return 0 }
+        print(array)
+        return array.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
-        cell.realState = array[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellList", for: indexPath) as! ListViewCell 
+        
+        let item = viewModel.fetchedResultsController.object(at: indexPath) as FavoritedItem
+        print(item.city)
+        
         return cell
     }
-    
-    //TableView Delegate Methods
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.Cell.mainCellsize + 10
-    }
-
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Constants.Cell.imageMargin
-    }
-    
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? ListViewCell else { return }
-        
-        self.implementCaching(for: cell, at: indexPath)
-    }
-}
-
-// MARK: - Utility methods
-
-extension FavoritesViewController {
-    
-    //Used to bind the viewModel and the ViewController together
-    func bindViewModel() {
-        viewModel.$array
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] array in
-                self?.array = array
-                print("bindViewModel: This is the array:\(array)")
-            }
-            .store(in: &cancellables)
-    }
-    
-    //Used to implement cache on the images
-    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath) {
-        let itemNumber = NSNumber(value: indexPath.item)
-        
-        if let cachedImage = self.cache.object(forKey: itemNumber) {
-            print("Using a cached image for item: \(itemNumber)")
-            cell.realStateImage.image = cachedImage
-        } else {
-            UIImage.loadImage(with: array[indexPath.row],dispatchQueue: utilityQueue ) { [weak self] (image) in
-                guard let self = self, let image = image else { return }
-                
-                cell.realStateImage.image = image
-                self.cache.setObject(image, forKey: itemNumber)
-            }
-        }
-    }
-
 }
