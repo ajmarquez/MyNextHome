@@ -1,22 +1,30 @@
 # MyNextHome
 
-##Architecture
+![180](https://user-images.githubusercontent.com/5343418/123904160-5032c080-d970-11eb-98d7-d1c77d449225.png)
+
+![Simulator Screen Shot - iPhone 12 Pro - 2021-06-30 at 06 57 03](https://user-images.githubusercontent.com/5343418/123904645-1f9f5680-d971-11eb-8d1d-a88275b8fba7.png)
+![Simulator Screen Shot - iPhone 12 Pro - 2021-06-30 at 06 57 19](https://user-images.githubusercontent.com/5343418/123904646-2037ed00-d971-11eb-9858-9bfcf86ec1ad.png)
+![Simulator Screen Shot - iPhone 12 Pro - 2021-06-30 at 06 57 28](https://user-images.githubusercontent.com/5343418/123904647-20d08380-d971-11eb-8524-ed42bbe1a462.png)
+
+
+
+## Architecture
 I decided to go for an MVVMC approach, while MVC or MVP could have been easier for the size of the project, the first allows for a more flexible expansion of the project if needed. The binding was done via Combine. 
 
 The use of Storyboard coould have make the project on an easier implementation, but, in case of scaling the Storyboards are very problematic when working several developers under Version Control System. Many merge conflics appear and many hours can be spend on that. That's why the decision of running programmatically was chosen. 
 
-##Dashboard (RealStateListViewController)
+## Dashboard (RealStateListViewController)
 The strategy for the dashboard was to propagate the model via Combine. Use a coordinator to acces to each one of the Viewcontroller. By starting with the idea of a non-persistent dashboard, later in the project I realised that maybe integrating CoreData would allow for an easier integration and reutilization of components. 
 
 The idea was to make it scalable, so if it's decided to expand the list to more that 10 elements it could be possible. Also attaching a SearchBar could use the same combine architecture. 
 
-##Favorite List
-The data was stored in CoreData, being one of the best options for storing several models locally. A Viewmodel controls the reloading of data and the methods for deleting and adding new items. 
+## Favorite List
+The data was stored in CoreData, being one of the best options for storing several models locally. A Viewmodel controls the reloading of data and the methods for deleting and adding new items. Deletion of items can be done via swiping. 
 
-##Networking
+## Networking
 Several layer with the purpose of enforcing type safety to avoid errors and being able to scale if more Endpoints are necesarry. 
 
-##Constants
+## Constants
 On the Utils folder the contans were arrange in other being able to quickly change variables all view corner, margins, colors and images. 
 
 ## Images
@@ -29,9 +37,6 @@ But the domain can't be found unless we erase the `uat`, and then the image can 
  ## Extra
  I wanted to make the design a little bit nice, even that it's not part of the evaluation. You can also choose dark or light view. 
  
- 
- 
- ----
  ## Limitations & bugs
  
  - The proper control of the status of the Favorite icon on the RealStateListViewcontroller needs some work. The re-use of the cell creates some problems on that particular view.
