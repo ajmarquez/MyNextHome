@@ -14,6 +14,7 @@ struct Colors {
     static let mainBackground = UIColor(named: "MidnightBackground")
     static let subtitleText = UIColor(named: "subtitleText")
     static let nightColor = UIColor(named: "night")
+    static let cardBackground = UIColor(named: "cardBackground")
     
     
 }

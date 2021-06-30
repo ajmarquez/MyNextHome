@@ -62,9 +62,18 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
         let item = array[indexPath.row]
+        
         cell.setPriceLabelText(currency: item.currency, price: item.price)
         cell.setTitleText(title: item.title)
         cell.setDetailsLabelText(street: item.street, city: item.city)
+        
+        cell.favoriteButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        cell.favoriteButton.tag = indexPath.row
+        
+        cell.favoriteButton.favState = (FavoritesRepository().retrieveItem(id: item.id))
+        
+        cell.favoriteButton.configImageState()
+        
         return cell
     }
     
@@ -81,8 +90,26 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = cell as? ListViewCell else { return }
         let item = array[indexPath.row]
         
+        
         self.implementCaching(for: cell, at: indexPath, withURL: item.imageURL)
     }
+}
+
+extension RealStateViewController {
+    // Control
+    @objc func didTapButton(_ sender: CellButton) {
+        sender.favState = !sender.favState
+        if sender.favState {
+            print("ADD")
+            viewModel.addItemToFavorites(array[sender.tag])
+
+        } else {
+            print("REMOVe")
+            viewModel.removeItemFromFavorites(array[sender.tag])
+        }
+        
+    }
+
 }
 
 // MARK: - Utility methods

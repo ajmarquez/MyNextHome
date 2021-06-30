@@ -11,22 +11,38 @@ import UIKit
 class CellButton: UIButton {
     
     typealias DidTapButton = (CellButton) -> ()
-
-    var didTouchUpInside: DidTapButton? {
-        didSet {
-            if didTouchUpInside != nil {
-                addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
-            } else {
-                removeTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
-            }
+    var favState: Bool = false  {
+        didSet{
+            configImageState()
         }
     }
 
+//    var didTouchUpInside: DidTapButton? {
+//        didSet {
+//            if didTouchUpInside != nil {
+//                addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
+//            } else {
+//                removeTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
+//            }
+//        }
+//    }
+
       // MARK: - Actions
+//
+//    @objc func didTouchUpInside(_ sender: UIButton) {
+//        //favState = !favState
+//        imageState()
+//        if let handler = didTouchUpInside {
+//            handler(self)
+//            favState = !favState
+//        }
+//    }
     
-    @objc func didTouchUpInside(_ sender: UIButton) {
-        if let handler = didTouchUpInside {
-            handler(self)
+    func configImageState() {
+        if favState {
+            self.setImage(UIImage(named: Constants.Images.heartFull), for: .normal)
+        } else {
+            self.setImage(UIImage(named: Constants.Images.heartEmpty), for: .normal)
         }
     }
     

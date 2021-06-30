@@ -21,10 +21,10 @@ extension FavoritedItem {
     @NSManaged public var geoLocation: String?
     @NSManaged public var id: Float
     @NSManaged public var imageURL: String?
-    @NSManaged public var itemDescription: String?
+    @NSManaged public var itemDescription: String
     @NSManaged public var price: Float
-    @NSManaged public var street: String?
-    @NSManaged public var title: String?
+    @NSManaged public var street: String
+    @NSManaged public var title: String
     @NSManaged public var zip: String?
 
 }

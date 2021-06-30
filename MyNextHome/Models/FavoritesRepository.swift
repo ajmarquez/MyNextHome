@@ -55,20 +55,71 @@ struct FavoritesRepository {
         }
     }
     
+    // GET
+    func retrieveItem(id: Float) -> Bool {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            preconditionFailure("Could not load Appdelegate")
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritedItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id.description)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "id") as! Float)
+                print("TRUE")
+                return true
+                
+            }
+        } catch {
+            print("Failed")
+           
+           
+        }
+        print("FALSE")
+        return false
+        
+    }
+    
     // DELETE
-    func deleteEntity(for id: Float) {
+    func deleteEntity(for title: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritedItem")
-        fetchRequest.predicate = NSPredicate(format: "id = %@", id.description)
+        fetchRequest.predicate = NSPredicate(format: "title == %@", title)
         
         do {
-            let test = try managedContext.fetch(fetchRequest)
+            print("Deleting")
+            let result = try managedContext.fetch(fetchRequest)
             
-            let objectToDelete = test[0] as! NSManagedObject
+            let objectToDelete = result[0] as! NSManagedObject
             managedContext.delete(objectToDelete)
             
+            do {
+                try managedContext.save()
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func deleteAll() {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritedItem")
+        //fetchRequest.predicate = NSPredicate(format: "id = %@", id.description)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            print("Deleting all")
+            try managedContext.execute(deleteRequest)
+       
             do {
                 try managedContext.save()
             } catch {

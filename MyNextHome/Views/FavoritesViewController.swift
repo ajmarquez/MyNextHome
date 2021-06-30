@@ -26,8 +26,14 @@ final class FavoritesViewController: UIViewController, NSFetchedResultsControlle
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        viewModel.loadData(delegate: self)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
-        viewModel.loadSaveData(delegate: self)
+        viewModel.loadData(delegate: self)
         tableView.reloadData()
         view.addSubview(tableView)
         tableView.setContrains(view: self.view)
@@ -39,22 +45,7 @@ final class FavoritesViewController: UIViewController, NSFetchedResultsControlle
         
         
     }
-    
-//    func loadSaveData() {
-//        if fetchedResultsController == nil {
-//            let request:  NSFetchRequest<FavoritedItem> = FavoritedItem.fetchRequest()
-//            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
-//            fetchedResultsController.delegate = self
-//        }
-//
-//        do {
-//            try fetchedResultsController.performFetch()
-//            tableView.reloadData()
-//        } catch {
-//            print("Failed")
-//        }
-//    }
-    
+
    
 }
 
@@ -62,7 +53,6 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let array = viewModel.fetchedResultsController.fetchedObjects else { return 0 }
-        print(array)
         return array.count
     }
     
@@ -70,8 +60,9 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
         
         let item = viewModel.fetchedResultsController.object(at: indexPath)
-        
-        cell.setPriceLabelText(currency: item.currency, price: item.price)  
+        cell.setPriceLabelText(currency: item.currency, price: item.price)
+        cell.setTitleText(title: item.title)
+        cell.setDetailsLabelText(street: item.street, city: item.city)
         
         return cell
     }
@@ -88,7 +79,7 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ListViewCell else { return }
         let item = viewModel.fetchedResultsController.object(at: indexPath)
-        
+        cell.realStateImage.image = nil
         guard let imageURL = item.imageURL else { return }
         self.implementCaching(for: cell, at: indexPath, withURL: imageURL)
     }
@@ -101,9 +92,11 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
 
         let item = viewModel.fetchedResultsController.object(at: indexPath)
         if editingStyle == .delete {
-            viewModel.deleteItem(with: item.id)
+            viewModel.deleteItem(with: item.title) 
+            tableView.reloadData()
         }
     }
+    
     
     //FetchedResult Delegate
     
@@ -131,8 +124,9 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension FavoritesViewController {
     func implementCaching(for cell: ListViewCell,at indexPath: IndexPath, withURL: String) {
-        let itemNumber = NSNumber(value: indexPath.item)
         
+        let itemNumber = NSNumber(value: indexPath.item)
+
         if let cachedImage = self.cache.object(forKey: itemNumber) { 
             cell.realStateImage.image = cachedImage
         } else {

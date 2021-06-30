@@ -27,12 +27,13 @@ final class RealStateViewModel {
             .assign(to: &$array)
     }
     
-    func getRealStateList() {
+    func addItemToFavorites(_ item: RealState) {
+        FavoritesRepository().createData(realState: item)
     }
     
-    
-    
-    func didFavoriteRealState() {}
-    
+    func removeItemFromFavorites(_ item: RealState) {
+        print("Delete ")
+        FavoritesRepository().deleteEntity(for: item.title)
+    }
     
 }

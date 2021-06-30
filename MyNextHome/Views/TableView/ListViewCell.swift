@@ -45,14 +45,14 @@ class ListViewCell: UITableViewCell {
     let containerView:UIView = {
         let view =  UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .white
+        view.backgroundColor = Colors.cardBackground
         view.layer.cornerRadius = Constants.Cell.cornerRadius
         view.clipsToBounds = true
         
         return view
     }()
     
-    let labelContainerView:UIView = {
+    let labelContainerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
@@ -70,6 +70,13 @@ class ListViewCell: UITableViewCell {
         return image
     }()
     
+    var favoriteButton: CellButton = {
+        let button = CellButton()
+        //button.setImage(UIImage(named: Constants.Images.heartEmpty ), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -79,6 +86,7 @@ class ListViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.realStateImage.image = nil
+        favoriteButton.setImage(nil, for: .normal)
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -88,6 +96,7 @@ class ListViewCell: UITableViewCell {
         
         self.contentView.addSubview(containerView)
         containerView.addSubview(realStateImage)
+        containerView.addSubview(favoriteButton)
         labelContainerView.addSubview(priceLabel)
         labelContainerView.addSubview(headlineLabel)
         labelContainerView.addSubview(detailsLabel)
@@ -103,6 +112,12 @@ class ListViewCell: UITableViewCell {
         realStateImage.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: Constants.Cell.imageMargin).isActive = true
         realStateImage.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: Constants.Cell.imageMargin * -1).isActive = true
         realStateImage.heightAnchor.constraint(equalToConstant: 300).isActive = true
+        
+        favoriteButton.topAnchor.constraint(equalTo: realStateImage.topAnchor, constant: Constants.Cell.imageMargin).isActive = true
+        favoriteButton.trailingAnchor.constraint(equalTo: realStateImage.trailingAnchor, constant: Constants.Cell.imageMargin * -1).isActive = true
+        favoriteButton.widthAnchor.constraint(equalToConstant: 45).isActive = true
+        favoriteButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        
         
         labelContainerView.topAnchor.constraint(equalTo: realStateImage.bottomAnchor).isActive = true
         labelContainerView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor).isActive = true

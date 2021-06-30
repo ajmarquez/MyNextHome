@@ -31,5 +31,10 @@ struct Constants {
         static let itemDescription = "itemDescription"
     }
     
+    struct Images {
+        static let heartFull = "heartFull"
+        static let heartEmpty = "heartEmpty"
+    }
+    
     
 }

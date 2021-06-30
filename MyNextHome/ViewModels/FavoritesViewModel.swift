@@ -18,7 +18,7 @@ class FavoritesViewModel {
         self.container = container
     }
     
-    func loadSaveData(delegate: NSFetchedResultsControllerDelegate) {
+    func loadData(delegate: NSFetchedResultsControllerDelegate) {
         if fetchedResultsController == nil {
             let request:  NSFetchRequest<FavoritedItem> = FavoritedItem.fetchRequest()
             let sort = NSSortDescriptor(key: "title", ascending: false)
@@ -36,8 +36,8 @@ class FavoritesViewModel {
     }
     
     
-    func deleteItem(with id: Float) {
-        FavoritesRepository().deleteEntity(for: id)
+    func deleteItem(with title: String) {
+        FavoritesRepository().deleteEntity(for: title)
     }
     
 }
