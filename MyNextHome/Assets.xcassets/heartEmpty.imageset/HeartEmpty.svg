@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="65px" height="60px" viewBox="0 0 65 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>HeartEmpty</title>
+    <g id="HeartEmpty" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" opacity="0" x="0" y="0" width="65" height="60"></rect>
+        <path d="M45.856,4 C36.2,4 32,12.803 32,12.803 C31.1424965,11.1713199 30.0313266,9.68615972 28.708,8.403 C25.9152506,5.5848851 22.11152,4.00059746 18.144,4.003 C8.484,4.003 0.488,11.878 2.244,23.663 C4,35.448 15.792,45.162 32,55.724 C40.1,50.45 47.1,45.376 52.3,40.156 C57.492,34.918 60.875,29.556 61.761,23.656 C63.512,11.875 55.516,4 45.856,4 Z" id="Path-Copy" stroke="#C3C0CD" stroke-width="4" fill-opacity="0.89" fill="#423D56" fill-rule="nonzero"></path>
+    </g>
+</svg>
