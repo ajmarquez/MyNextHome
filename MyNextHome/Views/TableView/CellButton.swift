@@ -17,27 +17,7 @@ class CellButton: UIButton {
         }
     }
 
-//    var didTouchUpInside: DidTapButton? {
-//        didSet {
-//            if didTouchUpInside != nil {
-//                addTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
-//            } else {
-//                removeTarget(self, action: #selector(didTouchUpInside(_:)), for: .touchUpInside)
-//            }
-//        }
-//    }
 
-      // MARK: - Actions
-//
-//    @objc func didTouchUpInside(_ sender: UIButton) {
-//        //favState = !favState
-//        imageState()
-//        if let handler = didTouchUpInside {
-//            handler(self)
-//            favState = !favState
-//        }
-//    }
-    
     func configImageState() {
         if favState {
             self.setImage(UIImage(named: Constants.Images.heartFull), for: .normal)

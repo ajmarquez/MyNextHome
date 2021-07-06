@@ -69,7 +69,7 @@ struct FavoritesRepository {
             let result = try managedContext.fetch(fetchRequest)
             for data in result as! [NSManagedObject] {
                 print(data.value(forKey: "id") as! Float)
-                print("TRUE")
+                print("retrieveItem(id: Float): TRUE")
                 return true
                 
             }
@@ -78,7 +78,7 @@ struct FavoritesRepository {
            
            
         }
-        print("FALSE")
+        print("retrieveItem(id: Float): FALSE")
         return false
         
     }
@@ -128,6 +128,34 @@ struct FavoritesRepository {
         } catch {
             print(error)
         }
+    }
+    
+    
+    func isFavorited(id: Float) -> Bool {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            preconditionFailure("Could not load Appdelegate")
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritedItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %f", id)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [FavoritedItem] {
+                print(data.value(forKey: "title") as! String)
+                print("isFavorited(geoLocation: String): TRUE")
+                return true
+                
+            }
+        } catch {
+            print("Failed")
+           
+           
+        }
+        //print("isFavorited(geoLocation: String): FALSE")
+        return false
+        
     }
 }
 

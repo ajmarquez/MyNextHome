@@ -29,6 +29,7 @@ struct Constants {
         static let currency = "currency"
         static let price = "price"
         static let itemDescription = "itemDescription"
+        static let isFavorited = "isFavorited"
     }
     
     struct Images {

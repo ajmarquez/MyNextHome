@@ -36,4 +36,8 @@ final class RealStateViewModel {
         FavoritesRepository().deleteEntity(for: item.title)
     }
     
+    func getFavoritedStatus(with id: Float) -> Bool {
+        return FavoritesRepository().isFavorited(id: id)
+    }
+    
 }
