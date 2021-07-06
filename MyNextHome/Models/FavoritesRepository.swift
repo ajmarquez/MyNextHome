@@ -157,6 +157,58 @@ struct FavoritesRepository {
         return false
         
     }
+    
+    //Save image for Cache
+    func saveImage(id: Float, data: Data) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            preconditionFailure("Could not load Appdelegate")
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritedItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %f", id)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for item in result as! [FavoritedItem] {
+                let nsData = NSData(data: data)
+                item.setValue(nsData , forKey: Constants.Entity.realStateImage)
+                print(item.value(forKey: "id") as! Float)
+                print("🛑saveImage: TRUE")
+                
+            }
+        } catch {
+            print("Failed")
+        }
+        
+    }
+    
+    func getImage(id: Float) -> Data? {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            preconditionFailure("Could not load Appdelegate")
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavoritedItem")
+        fetchRequest.predicate = NSPredicate(format: "id == %f", id)
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for item in result as! [FavoritedItem] {
+                print(item.value(forKey: "id") as! Float)
+                print("getImage: TRUE")
+                print("RealStateImage: \(String(describing: item.realStateImage))")
+                
+                guard let itemData = item.realStateImage else { return nil }
+                let img = Data(referencing: itemData)
+                return img
+            }
+        } catch {
+            print("Failed")
+        }
+        return nil
+    }
+    
 }
 
 

@@ -27,6 +27,8 @@ extension FavoritedItem {
     @NSManaged public var title: String
     @NSManaged public var zip: String
     @NSManaged public var isFavorited: Bool
+    @NSManaged public var realStateImage: NSData?
+    
 
 }
 

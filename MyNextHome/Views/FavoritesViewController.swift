@@ -13,7 +13,6 @@ final class FavoritesViewController: UIViewController, NSFetchedResultsControlle
     
     let tableView = MainTableView()
     let viewModel: FavoritesViewModel
-    private let cache = NSCache<NSNumber, UIImage>()
     private var container: NSPersistentContainer!
     
     
@@ -77,11 +76,9 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let cell = cell as? ListViewCell else { return }
+        guard let cell = cell as? ListViewCell else { return } 
         let item = viewModel.fetchedResultsController.object(at: indexPath)
-        cell.realStateImage.image = nil
-        guard let imageURL = item.imageURL else { return }
-        self.implementCaching(for: cell, at: indexPath, withURL: imageURL)
+        self.implementCaching(for: cell, at: indexPath, for: item)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -114,6 +111,8 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
                 tableView.reloadRows(at: [indexPath!], with: .fade)
         case .move:
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
+        @unknown default:
+            print("Error executing action")
         }
     }
     
@@ -123,24 +122,24 @@ extension FavoritesViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension FavoritesViewController {
-    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath, withURL: String) {
+    func implementCaching(for cell: ListViewCell,at indexPath: IndexPath, for item: FavoritedItem) {
         
-        let itemNumber = NSNumber(value: indexPath.item)
-
-        if let cachedImage = self.cache.object(forKey: itemNumber) { 
-            cell.realStateImage.image = cachedImage
+        
+        if let itemImageData = viewModel.getImage(for: item.id) {
+            cell.realStateImage.image = UIImage(data: itemImageData) 
         } else {
             
-            if withURL.isEmpty || withURL.count < 3 {
-                cell.realStateImage.image = UIImage(named: "placeholder")
-            } else {
-                
-                UIImage.realStateImage(from: withURL) { [weak self] image in
-                    guard let self = self, let image = image else { return }
-                    
+            if let image = item.imageURL  {
+                UIImage.getRealStateImage(from: image) { [weak self] image in
+                    guard let image = image else { return }
                     cell.realStateImage.image = image
-                    self.cache.setObject(image, forKey: itemNumber)
+                    print("downloads image")
+                    self?.viewModel.saveImage(id: item.id, with: image.pngData())
                 }
+                
+                
+            } else {
+                cell.realStateImage.image = UIImage(named: Constants.Images.placeholder)
             }
         }
     }

@@ -140,7 +140,7 @@ extension RealStateViewController {
             cell.realStateImage.image = cachedImage
         } else {
             
-            UIImage.realStateImage(from: withURL) { [weak self] image in
+            UIImage.getRealStateImage(from: withURL) { [weak self] image in
                 guard let self = self, let image = image else { return }
                 
                 cell.realStateImage.image = image

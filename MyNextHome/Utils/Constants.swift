@@ -30,11 +30,13 @@ struct Constants {
         static let price = "price"
         static let itemDescription = "itemDescription"
         static let isFavorited = "isFavorited"
+        static let realStateImage = "realStateImage"
     }
     
     struct Images {
         static let heartFull = "heartFull"
         static let heartEmpty = "heartEmpty"
+        static let placeholder = "placeholder"
     }
     
     
