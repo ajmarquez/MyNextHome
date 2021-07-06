@@ -32,6 +32,12 @@ final class RealStateViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super .viewWillAppear(true)
+        print("ReloadingData")
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindViewModel()        
@@ -63,17 +69,16 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "listCell", for: indexPath) as! ListViewCell
         let item = array[indexPath.row]
         
+        //Set Cell Information
         cell.setPriceLabelText(currency: item.currency, price: item.price)
         cell.setTitleText(title: item.title)
         cell.setDetailsLabelText(street: item.street, city: item.city)
         
-        cell.favoriteButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        print("Call getFavoritedStatus for \(indexPath.row)")
         cell.favoriteButton.tag = indexPath.row
-        
-        cell.favoriteButton.favState = (FavoritesRepository().retrieveItem(id: item.id))
-        
-        cell.favoriteButton.configImageState()
-        
+        cell.favoriteButton.favState = false
+        cell.favoriteButton.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+                    
         return cell
     }
     
@@ -89,9 +94,10 @@ extension RealStateViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? ListViewCell else { return }
         let item = array[indexPath.row]
-        
-        
+        cell.favoriteButton.favState = viewModel.getFavoritedStatus(with: item.id)
+
         self.implementCaching(for: cell, at: indexPath, withURL: item.imageURL)
+        print("will display for \(indexPath.row)")
     }
 }
 
@@ -134,7 +140,7 @@ extension RealStateViewController {
             cell.realStateImage.image = cachedImage
         } else {
             
-            UIImage.realStateImage(from: withURL) { [weak self] image in
+            UIImage.getRealStateImage(from: withURL) { [weak self] image in
                 guard let self = self, let image = image else { return }
                 
                 cell.realStateImage.image = image

@@ -2,7 +2,7 @@
 //  FavoritedItem+CoreDataClass.swift
 //  MyNextHome
 //
-//  Created by Abelardo Marquez on 30.06.21.
+//  Created by Abelardo Marquez on 06.07.21.
 //
 //
 

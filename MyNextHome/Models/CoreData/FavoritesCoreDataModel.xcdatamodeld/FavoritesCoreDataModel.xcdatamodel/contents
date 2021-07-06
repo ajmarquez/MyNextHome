@@ -6,13 +6,15 @@
         <attribute name="geoLocation" attributeType="String"/>
         <attribute name="id" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="isFavorited" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="itemDescription" attributeType="String"/>
         <attribute name="price" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="realStateImage" optional="YES" attributeType="Binary"/>
         <attribute name="street" attributeType="String"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="zip" attributeType="String"/>
     </entity>
     <elements>
-        <element name="FavoritedItem" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="FavoritedItem" positionX="-63" positionY="-18" width="128" height="209"/>
     </elements>
 </model>

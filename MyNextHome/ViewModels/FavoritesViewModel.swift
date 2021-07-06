@@ -12,6 +12,7 @@ class FavoritesViewModel {
     
     var fetchedResultsController: NSFetchedResultsController<FavoritedItem>!
     private var container: NSPersistentContainer!
+    private let repository = FavoritesRepository()
     
     
     init(with container: NSPersistentContainer) {
@@ -36,8 +37,18 @@ class FavoritesViewModel {
     }
     
     
+    func saveImage(id: Float, with data: Data?){
+        guard let data = data else {return}
+        repository.saveImage(id: id, data: data)
+    }
+    
+    func getImage(for id: Float) -> Data? {
+        return repository.getImage(id: id)
+    }
+    
+    
     func deleteItem(with title: String) {
-        FavoritesRepository().deleteEntity(for: title)
+        repository.deleteEntity(for: title)
     }
     
 }

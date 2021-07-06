@@ -10,18 +10,18 @@ import Combine
 
 final class RealStateViewModel {
     typealias RealStateList = [RealState]
-    var networkService: HomegateAPI
+    var homegateAPI: HomegateAPI
     @Published private(set) var array: [RealState] = []
     
     
     init(with networkService: HomegateAPI) {
-        self.networkService = networkService
+        self.homegateAPI = networkService
         self.fetchList()
     }
     
     
     private func fetchList(){
-        networkService.loadRealStates()
+        homegateAPI.loadRealStates()
             .replaceError(with: RealStateResponse.default)
             .map(\.items)
             .assign(to: &$array)
@@ -34,6 +34,10 @@ final class RealStateViewModel {
     func removeItemFromFavorites(_ item: RealState) {
         print("Delete ")
         FavoritesRepository().deleteEntity(for: item.title)
+    }
+    
+    func getFavoritedStatus(with id: Float) -> Bool {
+        return FavoritesRepository().isFavorited(id: id)
     }
     
 }
