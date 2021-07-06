@@ -29,6 +29,7 @@ final class FavoritesViewController: UIViewController, NSFetchedResultsControlle
         super.viewWillAppear(true)
         viewModel.loadData(delegate: self)
         tableView.reloadData()
+        self.title = Constants.Navigation.favorites
     }
     
     override func viewDidLoad() {

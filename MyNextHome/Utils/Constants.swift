@@ -39,5 +39,10 @@ struct Constants {
         static let placeholder = "placeholder"
     }
     
+    struct Navigation {
+        static let dashboard = "MyNextHome"
+        static let favorites = "Watchlist"
+    }
+    
     
 }
